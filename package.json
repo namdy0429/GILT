@@ -1,0 +1,182 @@
+{
+  "name": "gilt",
+  "displayName": "GILT",
+  "description": "GILT is a prototype in-IDE LLM information support tool. It is designed to help programmers understand the code they are working on by providing explanations of the code. GILT is capable of generating on-demand information while considering the user’s local code context, by incorporating it into the LLM prompts.",
+  "version": "1.0.0-alpha",
+  "repository": "https://github.com/namdy0429/GILT",
+  "icon": "media/logo.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Machine Learning",
+    "Education"
+  ],
+  "keywords": [
+    "AI",
+    "OpenAI",
+    "GPT"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "GILT.createExp",
+        "title": "Create Explanation",
+        "icon": "$(hubot)"
+      },
+      {
+        "command": "GILT.updateAPIKey",
+        "title": "Update OpenAI API Key",
+        "icon": "$(pencil)"
+      },
+      {
+        "command": "GILT.removeAPIKey",
+        "title": "Remove OpenAI API Key from secret storage",
+        "icon": "$(error)"
+      },
+      {
+        "command": "GILT.telemetry.DumpLog",
+        "title": "Dump Telemetry Log",
+        "category": "GILT"
+      },
+      {
+        "command": "GILT.telemetry.ClearLog",
+        "title": "Clear Telemetry Log",
+        "category": "GILT"
+      },
+      {
+        "command": "GILT.telemetry.log",
+        "title": "Log Telemetry Event (internal)",
+        "category": "GILT"
+      }
+    ],
+    "configuration": {
+      "title": "AI for code understanding",
+      "properties": {
+        "GILT.org": {
+          "type": "string",
+          "default": null,
+          "markdownDescription": "The [organization](https://beta.openai.com/account/org-settings) value from OpenAI"
+        },
+        "GILT.chatModel": {
+          "type": "string",
+          "default": "gpt-3.5-turbo",
+          "markdownDescription": "The OpenAI [model](https://beta.openai.com/docs/models) to use for chat completions"
+        },
+        "GILT.model": {
+          "type": "string",
+          "default": "text-davinci-003",
+          "markdownDescription": "The OpenAI [model](https://beta.openai.com/docs/models) to use for text completions"
+        },
+        "GILT.maxTokens": {
+          "type": "number",
+          "default": 2400,
+          "minimum": 1,
+          "markdownDescription": "The maximum number of [tokens](https://beta.openai.com/docs/introduction/overview) for each text request to GPT"
+        },
+        "GILT.temperature": {
+          "type": "number",
+          "default": 0.2,
+          "minimum": 0,
+          "maximum": 1,
+          "markdownDescription": "The [temperature](https://beta.openai.com/docs/api-reference/completions/create#completions/create-temperature) of each text request to GPT. Must be between 0 and 1"
+        },
+        "GILT.codeModel": {
+          "type": "string",
+          "default": "code-davinci-002",
+          "markdownDescription": "The OpenAI [model](https://beta.openai.com/docs/models) to use for code completions"
+        },
+        "GILT.codeMaxTokens": {
+          "type": "number",
+          "default": 250,
+          "minimum": 1,
+          "markdownDescription": "The maximum number of [tokens](https://beta.openai.com/docs/introduction/overview) for each code request to GPT"
+        },
+        "GILT.codeTemperature": {
+          "type": "number",
+          "default": 0.1,
+          "minimum": 0,
+          "maximum": 1,
+          "markdownDescription": "The [temperature](https://beta.openai.com/docs/api-reference/completions/create#completions/create-temperature) of each code request to GPT. Must be between 0 and 1"
+        },
+        "telemetry.active": {
+          "title": "Activate telemetry? (requires restart)",
+          "type": "boolean",
+          "default": false,
+          "minimum": 0,
+          "description": "Activate telemetry? (requires restart)"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "GILT.createExp",
+        "key": "alt+a",
+        "when": "editorTextFocus"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "gilt-vscode-plugin",
+          "title": "GILT",
+          "icon": "media/logo.png"
+        }
+      ]
+    },
+    "views": {
+      "gilt-vscode-plugin": [
+        {
+          "type": "webview",
+          "id": "gilt-vscode-plugin.view",
+          "name": "GILT"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/highlight.js": "^10.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.4"
+  },
+  "author": "Daye Nam",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/namdy0429/GILT/issues"
+  },
+  "homepage": "https://github.com/namdy0429/GILT#readme",
+  "dependencies": {
+    "@ts-stack/markdown": "^1.4.0",
+    "highlight.js": "^11.7.0",
+    "indent-string": "^5.0.0",
+    "json5": "^2.2.3",
+    "openai": "^3.2.0",
+    "winston": "^3.8.2"
+  },
+  "pricing": "Free",
+  "publisher": "Daye Nam",
+  "galleryBanner": {
+    "color": "#D79D58"
+  }
+}
