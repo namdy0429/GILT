@@ -57,7 +57,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	});
 
 	// Update OpenAI API Key
-	let updateAPIKey = vscode.commands.registerCommand('GPT.updateAPIKey', async () => {
+	let updateAPIKey = vscode.commands.registerCommand('GILT.updateAPIKey', async () => {
 		console.log('Running updateAPIKey');
 
 		statusBarItem.hide();
@@ -70,7 +70,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	});
 
 	// Remove OpenAI API Key
-	let removeAPIKey = vscode.commands.registerCommand('GPT.removeAPIKey', async () => {
+	let removeAPIKey = vscode.commands.registerCommand('GILT.removeAPIKey', async () => {
 		console.log('Running removeAPIKey');
 
 		statusBarItem.hide();

@@ -55,7 +55,7 @@
       }
     ],
     "configuration": {
-      "title": "AI for code understanding",
+      "title": "GILT",
       "properties": {
         "GILT.org": {
           "type": "string",
