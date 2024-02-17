@@ -1,6 +1,9 @@
 # GILT - Generation-based Information-support with LLM Technology
 
-GILT (Generation-based Information-support with LLM Technology) is a prototype in-IDE LLM information support tool.
+GILT (Generation-based Information-support with LLM Technology) is a prototype in-IDE LLM information support tool. GILT is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dayen.gilt).
+
+![overview](https://github.com/namdy0429/GILT/assets/6078004/a83f901b-30eb-4b12-a3d2-fc66c5644bbf)
+
 
 ## Requirements
 
@@ -65,3 +68,15 @@ Configurations that may be useful to adjust include:
 ### Troubleshooting
 
 If you encounter error messages from GPT API requests, please refer to this [Error codes](https://platform.openai.com/docs/guides/error-codes) for detailed information.
+
+### Research Paper
+To reference GILT in your research, please cite our upcoming [ICSE'24 paper](https://arxiv.org/abs/2307.08177).
+
+```
+@inproceedings{nam2024gilt,
+  title={Using an LLM to Help With Code Understanding}, 
+  author={Daye Nam and Andrew Macvean and Vincent Hellendoorn and Bogdan Vasilescu and Brad Myers},
+  booktitle={Proceedings of the 46th International Conference on Software Engineering (ICSE 2024)},
+  year={2024}
+}
+```
